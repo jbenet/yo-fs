@@ -90,7 +90,7 @@ Tree.prototype.render = function (root, entries, onclick) {
         }, displayElem, function (err) {
           if (err) {
             var ext = path.extname(entry.name)
-            displayElem.innerHTML = '<div class="render-error">Can not display ' + ext + ' files.</div>'
+            displayElem.innerHTML = '<div class="render-error">Cannot display ' + ext + ' files.</div>'
           }
         })
       }
