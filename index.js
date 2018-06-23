@@ -34,6 +34,7 @@ Tree.prototype.render = function (root, entries, onclick) {
   var display = yo`<div id="${displayId}"></div>`
   var fs = yo`<div id="fs">
     <table id="file-widget">
+      ${breadcrumbRow()}
       ${backRow()}
       ${visible.map(function (entry) {
         return row(entry)
@@ -55,6 +56,13 @@ Tree.prototype.render = function (root, entries, onclick) {
     }
     onclick(ev, entry)
     self.update(self.render(entry.name, entries, onclick))
+  }
+
+  function breadcrumbRow () {
+    var r = root.match(/^[./]+?$/) ? '/' : '/' + root
+    return yo`<tr class='entry-breadcrumb'>
+      <td colspan="3" class="name">${r}</td>
+    </tr>`
   }
 
   function backRow () {
