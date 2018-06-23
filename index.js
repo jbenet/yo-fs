@@ -83,8 +83,9 @@ Tree.prototype.render = function (root, entries, onclick) {
         self.update(self.render(entry.name, entries, onclick))
       }
       if (entry.type === 'file') {
+        var renderName = entry.name + (self.srcMode ? '.json' : '') // force 'raw'
         data.render({
-          name: entry.name,
+          name: renderName,
           createReadStream: entry.createReadStream
         }, displayElem, function (err) {
           if (err) {
