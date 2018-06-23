@@ -50,6 +50,7 @@ Tree.prototype.render = function (root, entries, onclick) {
   return widget
 
   function backButton (ev) {
+    self.selected = null
     var entry = {
       name: path.dirname(root),
       type: 'directory'
@@ -74,6 +75,7 @@ Tree.prototype.render = function (root, entries, onclick) {
 
   function row (entry) {
     function click (e) {
+      self.selected = entry
       if (onclick(e, entry) === false) return
       var displayElem = document.getElementById(displayId)
       if (entry.type === 'directory') {
